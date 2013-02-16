@@ -6,23 +6,23 @@ A bare metal assembly implementation of the famous Nyan (Poptart) Cat meme compl
 I was bored one day and decided to try and program in ARM assembly.  I was shocked to find a
 forum dedicated to this on the Raspberry Pi site.  I learned quite a bit about how to set up
 the frame buffer and then later how to send audio to the audio out jack from several of the posts
-there.
+there.  Thanks to dexos, Martin Wells, dwelch67, and a few others.
 
 Optionally build it or just copy the already built kernel.img (this will replace Linux) to the boot partition
 of the SD card, plug in your Pi and enjoy.
 
 Note: The audio only will play out of the 3.5mm audio jack not via HDMI, you need to talk to the
-Video Core to do that, I haven't quite figured out how to do that yet.  The video will work with
+Video Core to do HDMI audio, I haven't quite figured out how to do that yet.  The video will work with
 either the composite port or HDMI.
 
 Building
 --------
 
-You'll need a ARM port of the GCC tool chain, you can get this from
+I wrote the assembly for GNU Assembler, you'll need a ARM port of the GCC tool chain, you can get this from
 https://launchpad.net/gcc-arm-embedded/+download
 
-Run build.sh, this will assemble the source and then append the media data files to the end of the
-binary image and the result will be kernel.img
+Run build.sh (you might need to edit the path to the ARM GCC tools), this will assemble the source and then
+append the media data files to the end of the binary image and the result will be kernel.img
 
 Copy that to an SD card that has the base Raspberry Pi firmware boot files:
 bootcode.bin, fixup.dat, fixup_cd.dat, fixup_x.dat, start.elf, start_cd.elf, start_x.elf
